@@ -1,2 +1,2 @@
 # funny
-some funny toy
+img2txt : img transfer txt
