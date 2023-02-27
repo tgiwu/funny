@@ -110,7 +110,7 @@
         seeds.push(seed)
     }
 
-    function explode(x, y, z) {
+    function sparkExplode(x, y, z) {
         let t = 5 + parseInt(Math.random() * 50)
         let sparkV = 1 + Math.random() * 2.5
 
@@ -171,7 +171,6 @@
             spark.radius = 20 + Math.random() * 20
             spark.alpha = 1
             spark.trail = new Array()
-            spark.isSub = 1
             sparks.push(spark)
         }
         d = Math.sqrt((x - playerX) * (x - playerX) + (y - playerY) * (y - playerY) + (z - playerZ) * (z - playerZ))
@@ -243,7 +242,6 @@
             spark.radius = 25 + Math.random() * 50
             spark.alpha = 1
             spark.trail = new Array()
-            spark.isSub = 0
             sparks.push(spark)
         }
 
@@ -427,10 +425,9 @@
                 ctx.drawImage(sparks[i].img, point.x - size / 2, point.y - size / 2, size, size);
 
                 if (sparks[i].alpha < 0.5 &&
-                    sparks[i].isSub === 0 &&
                     i % 20 === 1 &&
                     sparks.length < 500) {
-                    explode(sparks[i].x, sparks[i].y, sparks[i].z, 1, false)
+                    sparkExplode(sparks[i].x, sparks[i].y, sparks[i].z)
                     sparks.slice(i, 1)
                 }
 
